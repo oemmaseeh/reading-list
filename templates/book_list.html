@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Your Reading List</h1>
+    <ul>
+        {% for book in books %}
+            <li>{{ book.title }} by {{ book.author }} - <form action="/delete_book/{{ book.id }}" method="post"><input type="submit" value="Delete"></form></li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_book') }}">Add a Book</a>
+</body>
+</html>
